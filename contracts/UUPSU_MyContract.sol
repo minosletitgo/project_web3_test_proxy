@@ -5,7 +5,7 @@ import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 
-// 实现合约V1
+// 协助 - 通用可升级代理(UUPSUpgradeable)：实现合约
 contract UUPSU_MyContract_V1 is
     Initializable,
     UUPSUpgradeable,
@@ -37,7 +37,6 @@ contract UUPSU_MyContract_V1 is
     // } 
 }
 
-// 升级后的实现合约V2
 contract UUPSU_MyContract_V2 is UUPSU_MyContract_V1 {
     function increment() public {
         value += 1;

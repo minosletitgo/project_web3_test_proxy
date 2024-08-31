@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/proxy/transparent/ProxyAdmin.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 
-// 协助透明代理(TransparentUpgradeableProxy)：实现合约
+// 协助 - 透明代理(TransparentUpgradeableProxy)：实现合约
 contract TU_MyContract_V1 is Initializable, OwnableUpgradeable {
     uint256 internal value;
 
