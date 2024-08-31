@@ -31,10 +31,10 @@ contract UUPSU_MyContract_V1 is
         return value;
     }
 
-    // 添加获取逻辑合约的原始地址
-    function getLogicContractAddress() public view returns (address) {
-        return address(this);
-    } 
+    // // 添加获取逻辑合约的原始地址
+    // function getLogicContractAddress() public view returns (address) {
+    //     return address(this);
+    // } 
 }
 
 // 升级后的实现合约V2
