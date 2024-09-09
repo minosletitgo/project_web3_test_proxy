@@ -16,6 +16,7 @@ npm install @nomiclabs/hardhat-ethers@2.2.1
 npm install @nomiclabs/hardhat-etherscan@3.1.7
 
 npm install dotenv@16.4.5
+npm install --save-dev chai@4.3.6
 ----------------------------------------------------------------------------------------------------
 
 自行搭建hardhat.config.js 以及 .env配置文件
@@ -40,4 +41,15 @@ npx hardhat run .\scripts\verify_UUPSU.js --network sepolia
 @openzeppelin/contracts/proxy/transparent/TransparentUpgradeableProxy.sol
 @openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol
 ----------------------------------------------------------------------------------------------------
+
+计算(编译后)合约字节码的大小(KB)
+node scripts/calculate_ByteCodeSize.js
+
+----------------------------------------------------------------------------------------------------
+
+npm install --save-dev hardhat-gas-reporter@2.2.1
+npx hardhat test test/Hello.test.js
+
+----------------------------------------------------------------------------------------------------
+
 

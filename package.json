@@ -9,7 +9,9 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "hardhat": "^2.22.9"
+    "chai": "^4.3.6",
+    "hardhat": "^2.22.9",
+    "hardhat-gas-reporter": "^2.2.1"
   },
   "dependencies": {
     "@nomiclabs/hardhat-ethers": "^2.2.1",

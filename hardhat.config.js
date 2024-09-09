@@ -1,6 +1,7 @@
 require("@nomiclabs/hardhat-ethers");
 require("@nomiclabs/hardhat-etherscan");
 require("@openzeppelin/hardhat-upgrades");
+require("hardhat-gas-reporter")
 require("dotenv").config();
 
 module.exports = {
@@ -28,5 +29,15 @@ module.exports = {
     apiKey: {
       sepolia: process.env.ETHERSCAN_API_KEY_sepolia,
     },
+  },
+  gasReporter: {
+    enabled: true, // 启用 gas reporter
+    currency: 'USD', // 货币单位（可以是 'USD', 'ETH', 'EUR' 等）
+    gasPrice: 20, // gas price (单位: gwei)
+    outputFile: 'gas-report.txt', // 指定输出报告的文件路径
+    noColors: true, // 禁用颜色输出（默认为 false）
+    showTimeSpent: true, // 显示每个测试用例的执行时间
+    showMethodSig: true, // 显示方法签名
+    excludeContracts: ['Migrations'], // 排除不需要报告的合约
   },
 };
