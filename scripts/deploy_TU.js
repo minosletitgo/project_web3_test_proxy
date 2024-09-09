@@ -1,5 +1,13 @@
 const { ethers } = require("hardhat");
 
+/*
+    透明代理(TransparentUpgradeableProxy，简称TU代理)
+    --机制来源：openzeppelin/contracts/proxy/transparent
+    --独立的代理合约：ProxyAdmin，显性的调用，它有且只实现升级逻辑
+    --没有选择器冲突
+    --特性：Gas消耗高
+*/
+
 async function main() {
     // 部署实现合约V1
     const TU_MyContract_V1 = await ethers.getContractFactory("TU_MyContract_V1");

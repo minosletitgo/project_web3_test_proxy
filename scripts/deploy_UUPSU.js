@@ -1,7 +1,15 @@
 const { ethers, upgrades } = require("hardhat");
 
+/*
+    通用可升级代理(UUPSUpgradeable，简称UUPSU代理)
+    --机制来源：openzeppelin/contracts-upgradeable
+    --独立代理合约：无需显性的调用(隐藏在逻辑合约的上层基类中，自带升级函数)
+    --没有选择器冲突
+    --特性：Gas消耗不高，但更复杂
+*/
+
 async function main() {
-  // 部署实现合约V1
+  // 部署代理合约，并指向V1
   const UUPSU_MyContract_V1 = await ethers.getContractFactory("UUPSU_MyContract_V1");
   const uupsu_MyContract_V1 = await upgrades.deployProxy(UUPSU_MyContract_V1, [142], {
     initializer: "initialize",
@@ -19,7 +27,7 @@ async function main() {
   // 部署实现合约V2
   const UUPSU_MyContract_V2 = await ethers.getContractFactory("UUPSU_MyContract_V2");
 
-  // 升级到V2
+  // 升级到V2(调用OpenZepplin封装好的upgrades.upgradeProxy)
   const uupsu_MyContract_V2 = await upgrades.upgradeProxy(
     uupsu_MyContract_V1.address,
     UUPSU_MyContract_V2
