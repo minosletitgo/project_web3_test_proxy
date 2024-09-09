@@ -5,7 +5,16 @@ require("hardhat-gas-reporter")
 require("dotenv").config();
 
 module.exports = {
-  solidity: "0.8.24",
+  solidity: {
+    version: "0.8.24",
+    settings: {
+      optimizer: {
+        enabled: true,  // 启用优化
+        runs: 200       // 运行次数，通常设置为 200
+      }
+    },
+    viaIR: true         // 启用 Intermediate Representation 优化
+  },
   networks: {
     localHardhat: {
       url: "http://127.0.0.1:8545",
