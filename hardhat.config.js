@@ -29,7 +29,7 @@ module.exports = {
       loggingEnabled: true, // 启用日志记录
     },
     sepolia: {
-      url: "https://eth-sepolia.g.alchemy.com/v2/u_NptynwrwopejMYBwQ5ZVxHrNsoAigq",
+      url: process.env.PRIVATE_URL_ETH_Sepolia,
       chainId: 11155111,
       accounts: [process.env.PRIVATE_KEY_sepolia],
     }

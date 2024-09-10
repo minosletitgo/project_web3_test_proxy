@@ -20,6 +20,7 @@
     "@openzeppelin/contracts-upgradeable": "^4.9.2",
     "@openzeppelin/hardhat-upgrades": "^1.28.0",
     "dotenv": "^16.4.5",
-    "ethers": "^5.4.1"
+    "ethers": "^5.4.1",
+    "web3": "^4.12.1"
   }
 }
