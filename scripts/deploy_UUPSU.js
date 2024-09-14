@@ -17,6 +17,9 @@ const { ethers, upgrades } = require("hardhat");
 
     缺点：
     --逻辑合约中包含了升级逻辑，可能引发安全性问题。如果逻辑合约本身的升级逻辑存在漏洞，合约可能被恶意升级。
+
+    适用项目：
+    --适合那些对效率要求更高的项目
 */
 
 async function main() {

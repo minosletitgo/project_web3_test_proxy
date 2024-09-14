@@ -17,6 +17,9 @@ const { ethers } = require("hardhat");
 
     缺点：
     --需要对管理员权限进行检查，这导致每次调用都会增加额外的权限检查开销。
+
+    适用项目：
+    --适合那些比较稳定成熟的项目
 */
 
 async function main() {
