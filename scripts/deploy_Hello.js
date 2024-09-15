@@ -7,7 +7,7 @@ async function main() {
     await hello.deployed();
     console.log("hello.address = ", hello.address); 
 
-    // 监听 ContractDeployed 事件
+    // 监听 ContractDeployed 事件 
     hello.on("DoLog", (str) => {
         console.log(`hello event detected!`);
         console.log(`str: ${str}`);
