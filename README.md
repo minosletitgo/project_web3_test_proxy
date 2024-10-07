@@ -92,8 +92,9 @@ npx hardhat run .\scripts\verify_UUPSU.js --network sepolia
 ```
 
 * 本工程主要是演示了【透明代理模式】与【通用可升级代理模式】
-@openzeppelin/contracts/proxy/transparent/TransparentUpgradeableProxy.sol
-@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol
+>@openzeppelin/contracts/proxy/transparent/TransparentUpgradeableProxy.sol
+
+>@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol
 
 
 ----------------------------------------------------------------------------------------------------
