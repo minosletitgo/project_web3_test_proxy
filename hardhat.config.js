@@ -2,7 +2,9 @@ require("@nomiclabs/hardhat-ethers");
 require("@nomiclabs/hardhat-etherscan");
 require("@openzeppelin/hardhat-upgrades");
 require("hardhat-gas-reporter")
+require('hardhat-abi-exporter');
 require("dotenv").config();
+const path = require('path');
 
 module.exports = {
   solidity: {
@@ -49,4 +51,10 @@ module.exports = {
     showMethodSig: true, // 显示方法签名
     excludeContracts: ['Migrations'], // 排除不需要报告的合约
   },
+  abiExporter: {
+    runOnCompile: false, // 这行很重要，确保每次编译都会导出 ABI(本工程，放弃使用，有未知的重名合约)
+    path: './abi', // ABI 文件的输出目录
+    clear: true,    // 每次生成时清空输出目录
+    flat: true,     // 是否将所有 ABI 写入一个文件
+  },   
 };

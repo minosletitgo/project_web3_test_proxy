@@ -11,6 +11,7 @@
   "devDependencies": {
     "chai": "^4.3.6",
     "hardhat": "^2.22.9",
+    "hardhat-abi-exporter": "^2.10.1",
     "hardhat-gas-reporter": "^2.2.1"
   },
   "dependencies": {
@@ -21,6 +22,7 @@
     "@openzeppelin/hardhat-upgrades": "^1.28.0",
     "dotenv": "^16.4.5",
     "ethers": "^5.4.1",
-    "web3": "^4.12.1"
+    "web3": "^4.12.1",
+    "winston": "^3.14.2"
   }
 }

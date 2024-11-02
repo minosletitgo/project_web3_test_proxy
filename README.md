@@ -47,6 +47,17 @@ npm install dotenv@16.4.5
 ```
 npm install --save-dev chai@4.3.6
 ```
+
+* 安装"日志库"(用于在应用程序中记录日志)
+```
+npm install winston@3.14.2
+```
+
+* 安装"abi导出库"(用于导出智能合约的 ABI（应用程序二进制接口）到指定文件)
+```
+npm install --save-dev hardhat-abi-exporter@2.10.1
+```
+
 ----------------------------------------------------------------------------------------------------
 
 * 自行搭建hardhat.config.js 以及 .env配置文件
@@ -106,10 +117,43 @@ node scripts/calculate_ByteCodeSize.js
 
 ----------------------------------------------------------------------------------------------------
 
+* 编译：
+```
+npx hardhat compile
+```
+
+* 部署：启动且使用本地hardhat开发节点(会生成20个账户)：
+```
+npx hardhat node
+```
+
+* 部署：使用第三方软件Ganache搭建开发节点(需要提前搭建好)
+```
+npx hardhat run .\scripts\deploy_XXX.js --network localGanache
+```
+
+* 部署：使用测试链
+```
+npx hardhat run .\scripts\deploy_XXX.js --network sepolia
+```
+
+* 验证：(由于我的VPN比较差，所以验证都失败，虽然我尝试了很多方式)
+```
+npx hardhat run .\scripts\verify_XXX.js --network sepolia
+```
+
 * 测试：
 ```
 npx hardhat test test/Hello.test.js
 ```
 
+* 导出abi文件：
+```
+npx hardhat export-abi
+```
 
+* 清空导出的abi文件：
+```
+npx hardhat clear-abi
+```
 
