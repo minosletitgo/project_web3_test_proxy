@@ -22,48 +22,6 @@ const { ethers, upgrades } = require("hardhat");
     --适合那些比较稳定成熟的项目
 */
 
-// async function main() {
-//     // 部署实现合约V1
-//     const TU_MyContract_V1 = await ethers.getContractFactory("TU_MyContract_V1");
-//     const tu_MyContract_V1 = await TU_MyContract_V1.deploy();
-//     await tu_MyContract_V1.deployed();
-//     console.log("tu_MyContract_V1.address = ", tu_MyContract_V1.address);
-    
-//     // 部署ProxyAdmin
-//     const ProxyAdmin = await ethers.getContractFactory("ProxyAdmin");
-//     const proxyAdmin = await ProxyAdmin.deploy();
-//     await proxyAdmin.deployed();
-//     console.log("proxyAdmin.address = ", proxyAdmin.address);
-    
-//     // 部署透明代理，且指向V1
-//     const TransparentUpgradeableProxy = await ethers.getContractFactory("TransparentUpgradeableProxy");
-//     const proxy = await TransparentUpgradeableProxy.deploy(
-//         tu_MyContract_V1.address,
-//         proxyAdmin.address,
-//         tu_MyContract_V1.interface.encodeFunctionData("initialize", [42])
-//     );
-
-//     // 拿到V1的套壳版，并打印一些内部数据
-//     const proxyAsV1 = TU_MyContract_V1.attach(proxy.address);
-//     console.log("proxyAsV1_value = ", (await proxyAsV1.getValue()).toString());
-    
-//     // 部署实现合约V2
-//     const TU_MyContract_V2 = await ethers.getContractFactory("TU_MyContract_V2");
-//     const tu_MyContract_V2 = await TU_MyContract_V2.deploy();
-//     await tu_MyContract_V2.deployed();
-//     console.log("tu_MyContract_V2.address = ", tu_MyContract_V2.address);
-
-//     // 升级合约到V2(透明代理指向V2)
-//     await proxyAdmin.upgrade(proxy.address, tu_MyContract_V2.address);
-
-//     // 拿到V2的套壳版，并打印一些内部数据
-//     const proxyAsV2 = TU_MyContract_V2.attach(proxy.address);
-//     console.log("proxyAsV2_value = ", (await proxyAsV2.getValue()).toString());
-
-//     await proxyAsV2.increment();
-//     console.log("proxyAsV2_value = ", (await proxyAsV2.getValue()).toString());
-// }
-
 async function main() {
     const LogicV1 = await ethers.getContractFactory("TU_MyContract_V1");
     const proxy = await upgrades.deployProxy(LogicV1, ["from_initializer", 1001], 
@@ -75,8 +33,8 @@ async function main() {
     );    
     await proxy.deployed();
 
-    // 代理合约的地址 localHardhat: 0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9
-    // 代理合约的地址 sepolia: 0x40D7c1dA96ab2960f776C4322eFABc92C2633D1d    
+    // 代理合约的地址 localHardhat: 0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0
+    // 代理合约的地址 sepolia: 0xa45Dc2e10154167282D2598f37821d9133a60fbf    
     console.log("proxy deployed to:", proxy.address);
 
     // 逻辑合约地址 localHardhat: 0x5FbDB2315678afecb367f032d93F642f64180aa3

@@ -3,7 +3,7 @@ const { ethers, upgrades } = require("hardhat");
 
 describe(" ", function () {  
   // 代理合约的地址
-  let proxyAddress = "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9";
+  let proxyAddress = "0xa45Dc2e10154167282D2598f37821d9133a60fbf";
   // 逻辑合约的地址
   let implementationAddress;
   // 使用代理合约的地址，绑定逻辑合约，生成的套壳合约
@@ -38,4 +38,5 @@ describe(" ", function () {
 /*
   npx hardhat test test/test.TU_MyContract_Upgrade.js --network localHardhat
   npx hardhat test test/test.TU_MyContract_Upgrade.js --network sepolia
+  0xa410aE44BD3d2d03a7B6D8fA6371Cc9978829Ec7
 */

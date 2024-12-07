@@ -43,6 +43,11 @@ npm install @nomiclabs/hardhat-etherscan@3.1.7
 npm install dotenv@16.4.5
 ```
 
+* 安装"undici插件"(处理HTTP请求，辅助验证合约的网络超时问题)
+```
+npm install --save-dev undici@5.2.0
+```
+
 * 安装"断言库"(用于 JavaScript 测试，提供了友好的语法来进行断言)
 ```
 npm install --save-dev chai@4.3.6
@@ -94,7 +99,7 @@ npx hardhat run .\scripts\deploy_TU.js --network sepolia
 npx hardhat run .\scripts\deploy_UUPSU.js --network sepolia
 ```
 
-* 验证：(由于我的VPN比较差，所以验证都失败，虽然我尝试了很多方式)
+* 验证智能合约到链上:
 ```
 npx hardhat run .\scripts\verify_TU.js --network sepolia
 ```
@@ -137,7 +142,7 @@ npx hardhat run .\scripts\deploy_XXX.js --network localGanache
 npx hardhat run .\scripts\deploy_XXX.js --network sepolia
 ```
 
-* 验证：(由于我的VPN比较差，所以验证都失败，虽然我尝试了很多方式)
+* 验证智能合约到链上:
 ```
 npx hardhat run .\scripts\verify_XXX.js --network sepolia
 ```

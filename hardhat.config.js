@@ -6,9 +6,16 @@ require('hardhat-abi-exporter');
 require("dotenv").config();
 const path = require('path');
 
+// 引入所需的模块
+const { ProxyAgent, setGlobalDispatcher } = require('undici');
+
+// 创建并设置全局代理
+const proxyAgent = new ProxyAgent('http://127.0.0.1:7890');
+setGlobalDispatcher(proxyAgent);
+
 module.exports = {
   solidity: {
-    version: "0.8.24",
+    version: "0.8.23",
     settings: {
       optimizer: {
         enabled: true,  // 启用优化
