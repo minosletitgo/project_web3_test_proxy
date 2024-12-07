@@ -75,10 +75,12 @@ async function main() {
     );    
     await proxy.deployed();
 
-    // 代理合约的地址: 0x9A9f2CCfdE556A7E9Ff0848998Aa4a0CFD8863AE
+    // 代理合约的地址 localHardhat: 0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9
+    // 代理合约的地址 sepolia: 0x40D7c1dA96ab2960f776C4322eFABc92C2633D1d    
     console.log("proxy deployed to:", proxy.address);
 
-    // 逻辑合约地址: 0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9
+    // 逻辑合约地址 localHardhat: 0x5FbDB2315678afecb367f032d93F642f64180aa3
+    // 逻辑合约地址 sepolia: 0x3FA78CfDf5Ca21c027Bad8169f79beCC8cfdF972    
     const implementationAddress = await upgrades.erc1967.getImplementationAddress(proxy.address);
     console.log("LogicV1 (implementation) deployed to:", implementationAddress);
 }
@@ -90,4 +92,5 @@ main().catch((error) => {
 
 /*
     npx hardhat run .\scripts\deploy_TU.js --network localHardhat
+    npx hardhat run .\scripts\deploy_TU.js --network sepolia
 */

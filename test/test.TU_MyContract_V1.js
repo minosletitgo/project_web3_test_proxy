@@ -3,7 +3,7 @@ const { ethers, upgrades } = require("hardhat");
 
 describe(" ", function () {  
   // 代理合约的地址
-  let proxyAddress = "0x9A9f2CCfdE556A7E9Ff0848998Aa4a0CFD8863AE";
+  let proxyAddress = "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9";
   // 逻辑合约的地址
   let implementationAddress;
   // 使用代理合约的地址，绑定逻辑合约，生成的套壳合约
@@ -28,8 +28,8 @@ describe(" ", function () {
     console.log("\n");
   });
 
-  it(" ", async function() {
-    console.log("获取查看逻辑合约成员变量: ");    
+   it(" ", async function() {
+    console.log("获取查看逻辑合约V1的成员变量: ");    
 
     let logic_InitWay;
     let logic_Version;
@@ -43,11 +43,10 @@ describe(" ", function () {
 
     logic_Value = (await proxyAsLogic.getValue()).toString();
     console.log("logic_Value:", logic_Value); 
-    
-    console.log("\n");
-  });
+   });
 });
 
 /*
-  npx hardhat test test/test.TU_MyContract.js --network localHardhat
+  npx hardhat test test/test.TU_MyContract_V1.js --network localHardhat
+  npx hardhat test test/test.TU_MyContract_V1.js --network sepolia
 */
