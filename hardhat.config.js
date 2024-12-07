@@ -15,7 +15,7 @@ module.exports = {
         runs: 200       // 运行次数，通常设置为 200
       }
     },
-    viaIR: true         // 启用 Intermediate Representation 优化
+    viaIR: true         // 启用 Intermediate Representation 优化    
   },
   networks: {
     localHardhat: {
@@ -57,4 +57,7 @@ module.exports = {
     clear: true,    // 每次生成时清空输出目录
     flat: true,     // 是否将所有 ABI 写入一个文件
   },   
+  mocha: {
+    reporter: 'dot', // 这里指定了Mocha的reporter
+  },  
 };

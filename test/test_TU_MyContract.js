@@ -69,3 +69,7 @@ describe("TU_MyContract_V1", function () {
     expect(value.toNumber()).to.eq(42);
   });
 });
+
+/*
+  npx hardhat test test/test_TU_MyContract.js
+*/
