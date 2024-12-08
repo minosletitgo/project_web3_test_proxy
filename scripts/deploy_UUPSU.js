@@ -23,43 +23,32 @@ const { ethers, upgrades } = require("hardhat");
 */
 
 async function main() {
-  // 部署代理合约，并指向V1
-  const UUPSU_MyContract_V1 = await ethers.getContractFactory("UUPSU_MyContract_V1");
-  const uupsu_MyContract_V1 = await upgrades.deployProxy(UUPSU_MyContract_V1, [142], {
-    initializer: "initialize",
-  });
-  await uupsu_MyContract_V1.deployed();
+  const LogicV1 = await ethers.getContractFactory("UUPSU_MyContract_V1");
+  const proxy = await upgrades.deployProxy(LogicV1, ["from_initializer", 1001], 
+      { 
+          initializer: "initialize",
+          //initializer: false,
+          kind: "uups"
+      }
+  );    
+  await proxy.deployed();
 
-  console.log("uupsu_MyContract_V1 proxy address = ", uupsu_MyContract_V1.address);
+  // 代理合约的地址 localHardhat: 0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512
+  // 代理合约的地址 sepolia: 0x0a15833fBF3a6197352C02f2A62F5e98A36Cb396    
+  console.log("proxy deployed to:", proxy.address);
 
-  // 打印逻辑合约V1的原始地址
-  const logicAddressV1 = await upgrades.erc1967.getImplementationAddress(uupsu_MyContract_V1.address);
-  console.log("uupsu_MyContract_V1 logic contract address = ", logicAddressV1);
-
-  console.log("proxyAsV1_value = ", (await uupsu_MyContract_V1.getValue()).toString());
-
-  // 部署实现合约V2
-  const UUPSU_MyContract_V2 = await ethers.getContractFactory("UUPSU_MyContract_V2");
-
-  // 升级到V2(调用OpenZepplin封装好的upgrades.upgradeProxy)
-  const uupsu_MyContract_V2 = await upgrades.upgradeProxy(
-    uupsu_MyContract_V1.address,
-    UUPSU_MyContract_V2
-  );  
-  console.log("uupsu_MyContract_V2 proxy address = ", uupsu_MyContract_V2.address);
-
-  // 打印逻辑合约V2的原始地址
-  const logicAddressV2 = await upgrades.erc1967.getImplementationAddress(uupsu_MyContract_V2.address);
-  console.log("uupsu_MyContract_V2 logic contract address = ", logicAddressV2);
-
-  console.log("proxyAsV2_value = ", (await uupsu_MyContract_V1.getValue()).toString());
-
-  await uupsu_MyContract_V2.increment();
-
-  console.log("proxyAsV2_value = ", (await uupsu_MyContract_V2.getValue()).toString());
+  // 逻辑合约地址 localHardhat: 0x5FbDB2315678afecb367f032d93F642f64180aa3
+  // 逻辑合约地址 sepolia: 0x279BB4B3523ECD1B468DE87c8FDf57e076717fC4    
+  const implementationAddress = await upgrades.erc1967.getImplementationAddress(proxy.address);
+  console.log("LogicV1 (implementation) deployed to:", implementationAddress);
 }
 
 main().catch((error) => {
   console.error(error);
   process.exitCode = 1;
 });
+
+/*
+  npx hardhat run .\scripts\deploy_UUPSU.js --network localHardhat
+  npx hardhat run .\scripts\deploy_UUPSU.js --network sepolia
+*/

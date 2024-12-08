@@ -9,7 +9,7 @@ contract TU_MyContract_V2 is TU_MyContract_V1 {
     address internal testAdr2;
 
     function getVersion() external pure virtual override returns (string memory) {
-        return "Version_V2";
+        return "TU_Version_V2";
     }
 
     function setValue2(uint256 _value) public virtual onlyOwner {

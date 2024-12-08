@@ -1,7 +1,12 @@
 const { ethers, run, network } = require("hardhat");
 
 async function main() {
-  // 填写准备验证的合约地址...
+  /*
+      此处，记录一下sepolia网的相关地址，可以上浏览器反复查询观看：
+      本次生成的代理合约地址：0xa45Dc2e10154167282D2598f37821d9133a60fbf
+
+      以下分别是V1与V2的地址 
+  */
   const contracts = [
     { address: "0x3FA78CfDf5Ca21c027Bad8169f79beCC8cfdF972", args: [] },
     { address: "0xa410aE44BD3d2d03a7B6D8fA6371Cc9978829Ec7", args: [] },

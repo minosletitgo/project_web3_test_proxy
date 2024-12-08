@@ -23,7 +23,7 @@ contract TU_MyContract_V1 is OwnableUpgradeable {
     }    
 
     function getVersion() external pure virtual returns (string memory) {
-        return "Version_V1";
+        return "TU_Version_V1";
     }
 
     function setValue(uint256 _value) public virtual onlyOwner {
