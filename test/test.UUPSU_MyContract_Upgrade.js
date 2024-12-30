@@ -20,7 +20,7 @@ describe(" ", function () {
 
   before(async function () {
     console.log("准备直接升级到V2: ");
-
+    // upgradeProxy函数中，直接包含了部署V2的过程，所以，我们没有手动部署V2
     const LogicV2 = await ethers.getContractFactory("UUPSU_MyContract_V2");
     await upgrades.upgradeProxy(proxyAddress, LogicV2);
 
